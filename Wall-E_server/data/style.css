@@ -91,6 +91,7 @@ canvas {
 }
 
 #s2{
+  -webkit-appearance: slider-vertical;
   height: 70vh;
   grid-area: b;
   justify-self: end;
