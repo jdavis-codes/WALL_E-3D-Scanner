@@ -1,0 +1,38 @@
+<!-- Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>STARGAZER V0.0.3</title>
+  <link rel="icon" type="image/x-icon" href="leaf.ico">
+  <meta name="theme-color" content="#02053b" />
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+</head>
+
+<body>
+  <div class="title">
+    <h1 id="wall">WALL</h1>
+    <div id="wcircle"></div>
+    <!-- <div id="ebox"> -->
+      <div id="rcircle"></div>
+      <h1 id="e">E</h1>
+    <!-- </div> -->
+  </div>
+  <main>
+  </main>
+  <div class="visualizer">
+    <script src="script.js"></script>
+  <input type="range" min="1" max="1000" value="500" class="slider" id="scale">
+  <input type="range" min="1" max="1000" value="500" class="slider" id="theta">
+  <input type="range" min="1" max="1000" value="500" class="slider" id="phi">
+  <div class="panel">
+    <button id="b1">LED</button>
+    <button id="b2">Scan</button>
+    <button id="b3">Reset</button>
+  </div>
+</body>
+
+</html>
