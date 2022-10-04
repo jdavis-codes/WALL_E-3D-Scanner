@@ -13,6 +13,8 @@
 </head>
 
 <body>
+  <div id="p5canvas"><script src="script.js"></script></div>
+  
   <div class="title">
     <h1 id="wall">WALL</h1>
     <div id="wcircle"></div>
@@ -21,17 +23,19 @@
       <h1 id="e">E</h1>
     <!-- </div> -->
   </div>
-  <main>
-  </main>
-  <div class="visualizer">
-    <script src="script.js"></script>
-  <input type="range" min="1" max="1000" value="500" class="slider" id="scale">
-  <input type="range" min="1" max="1000" value="500" class="slider" id="theta">
-  <input type="range" min="1" max="1000" value="500" class="slider" id="phi">
+  
+  <!-- <main>
+  </main> -->
+  
   <div class="panel">
+    <div id="s1"><input type="range" min="1" max="1000" value="500" class="slider" orient="vertical"></div>
+    <div id="s2"><input type="range" min="1" max="1000" value="500" class="slider" orient="vertical"></div>
+    <div id="s3"><input type="range" min="1" max="1000" value="500" class="slider"></div>
+
     <button id="b1">LED</button>
     <button id="b2">Scan</button>
     <button id="b3">Reset</button>
+    <button id="b4">grid</button>
   </div>
 </body>
 
