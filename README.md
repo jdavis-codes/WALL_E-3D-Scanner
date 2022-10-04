@@ -1,3 +1,5 @@
 # WALL-E 3D Scanner
- 
-[walle](images/IMG_9481.HEIC)
+
+<img src="images/IMG_9499.jpg" alt="drawing" width="400"/> <img src="images/IMG_9481.jpg" alt="drawing" width="400"/>
+
+
