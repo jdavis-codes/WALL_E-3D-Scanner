@@ -19,13 +19,35 @@ function onLoad(event) {
     document.getElementById("b1").addEventListener('click', onToggle);
     document.getElementById("b2").addEventListener('click', onScan);
     document.getElementById("b3").addEventListener('click', onReset);
+    document.getElementById("b4").addEventListener('click', toggleDebug);
+
+    document.querySelectorAll(".slider").forEach(function(element) {
+        element.addEventListener('mousedown', disableOrbit) 
+    });
+    document.querySelectorAll(".slider").forEach(function(element) {
+        element.addEventListener('mouseup', enableOrbit) 
+    });
 }
 
+function toggleDebug(){
+    debug = !debug;
+}
+
+function disableOrbit() {
+    orbit = false;
+}
+
+function enableOrbit() {
+    orbit = true;
+}
 // Global Variables
 
 let connected = false;  //tracks if the websocket connection is still valid
 let scanning = false;   // tracks if WALL-E is in scanning mode
 let scanloop;
+let orbit = true;
+let debug = true;
+let puppet = true;
 
 let data = 0;           // IR Sensor data
 let lastData = 0;
@@ -153,11 +175,12 @@ function addPoint(theta, phi){
 // P5.JS Setup, for the 3d enviornment
 
 function setup() {
-    s = windowHeight*0.6;
+    //s = windowHeight*0.6;
 
     setAttributes('antialias', true);
     setAttributes('alpha', true);
-    createCanvas(windowWidth,s,WEBGL);
+    var myCanvas = createCanvas(windowWidth,windowHeight,WEBGL);
+    myCanvas.parent("p5canvas");
 
     angleMode(DEGREES);
 }
@@ -166,10 +189,11 @@ function setup() {
 
 function draw() {
     clear();
-    //debugMode();
-    orbitControl();
+    debug ? debugMode():null;
+    orbit ? orbitControl():null;
+    
 
-    displayScale = document.getElementById("scale").value/100;
+    displayScale = document.getElementById("s3").value/100;
 
     // Draw array of scanned points
     
@@ -186,8 +210,8 @@ function draw() {
 // resizes canvas on when browser window is resized.
 
 function windowResized() {
-    s = windowHeight*0.6
-    resizeCanvas(windowWidth, s);
+    //s = windowHeight*0.6
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 // allows pupetteering of WALL-E by following 
@@ -195,7 +219,7 @@ function windowResized() {
 // maps screen space to max rotations
 
 function mouseDragged() {
-    if (scanning == false){
+    if (scanning == false && connected){
         let pan = map(mouseX, 0, width, thetaMin, thetaMax);
         let tilt = map(mouseY, 0, height, phiMax, phiMin);
         setTimeout(moveMotors(pan,tilt), 10);
