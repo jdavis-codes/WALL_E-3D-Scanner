@@ -1,6 +1,7 @@
 @font-face { font-family: Gunship; src: url('gunship.ttf'); } 
 
 html, body {
+  touch-action: none;
   font-family: Gunship;
   background-color: #02053b; 
   background-image: url('world_head.webp');
